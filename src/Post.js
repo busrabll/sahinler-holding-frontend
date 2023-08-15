@@ -10,13 +10,15 @@ function Post({ userName, lastName, verified, timestamp, text, avatar }) {
   return (
     <div className="post">
       <div className="post__avatar">
-        <Avatar src={avatar}></Avatar>
+        <Avatar aria-label="recipe" src={avatar}>
+          {userName.charAt(0).toUpperCase()}
+        </Avatar>
       </div>
       <div className="post__body">
         <div className="post__header">
           <div className="post__headerText">
             <h3>
-              {userName} {lastName}
+              {userName}
             </h3>
           </div>
           <div className="post__HeaderDescription">

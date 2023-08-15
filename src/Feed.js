@@ -23,23 +23,30 @@ function Feed() {
             )
     }, [])
 
-    return (
-        <div className="feed">
-            <div className="feed__header">
-                <h2>Home</h2>
+    if (error) {
+        return <div>Error</div>;
+    } else if (!loading) {
+        return <div>Loading...</div>;
+    } else {
+
+        return (
+            <div className="feed">
+                <div className="feed__header">
+                    <h2>Home</h2>
+                </div>
+
+                <TweetBox />
+
+                {posts.map(post => (
+                    <Post
+                        userName={post.userName}
+                        lastName={post.lastName}
+                        text={post.text}
+                    />
+                ))}
             </div>
-
-            <TweetBox />
-
-            {posts.map(post => (
-                <Post
-                    userName={post.userName}
-                    lastName={post.lastName}
-                    text={post.text}
-                />
-            ))}
-        </div>
-    );
+        );
+    }
 }
 
 export default Feed;
