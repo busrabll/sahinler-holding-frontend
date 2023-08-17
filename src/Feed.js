@@ -8,7 +8,8 @@ function Feed() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
+    const refreshPosts = () => {
+
         fetch("/api/posts")
             .then(res => res.json())
             .then(
@@ -21,7 +22,11 @@ function Feed() {
                     setError(error);
                 }
             )
-    }, [])
+    }
+
+    useEffect(() => {
+        refreshPosts();
+    }, [posts])
 
     if (error) {
         return <div>Error</div>;
@@ -35,12 +40,13 @@ function Feed() {
                     <h2>Home</h2>
                 </div>
 
-                <TweetBox />
+                <TweetBox userId={6} userName={"zeynep"} refreshPosts={refreshPosts} />
 
                 {posts.map(post => (
                     <Post
+                        postId={post.postId}
+                        userId={post.userId}
                         userName={post.userName}
-                        lastName={post.lastName}
                         text={post.text}
                     />
                 ))}

@@ -1,18 +1,24 @@
 import React from 'react'
 import './Post.css'
+import { Link } from 'react-router-dom';
 import { Avatar } from '@mui/material'
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import RepeatIcon from '@mui/icons-material/Repeat';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import PublishIcon from '@mui/icons-material/Publish';
 
-function Post({ userName, lastName, verified, timestamp, text, avatar }) {
+function Post(props) {
+
+  const { userName, userId, text, postId} = props;
+
   return (
     <div className="post">
       <div className="post__avatar">
-        <Avatar aria-label="recipe" src={avatar}>
-          {userName.charAt(0).toUpperCase()}
-        </Avatar>
+        <Link className="link" to={{ pathname: '/users/' + userId }}>
+          <Avatar aria-label='recipe'>
+            {userName.charAt(0).toUpperCase()}
+          </Avatar>
+        </Link>
       </div>
       <div className="post__body">
         <div className="post__header">
