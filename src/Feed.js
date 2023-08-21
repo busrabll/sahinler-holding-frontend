@@ -46,6 +46,7 @@ function Feed() {
                     <Post
                         postId={post.postId}
                         userId={post.userId}
+                        createDate={post.createDate}
                         userName={post.userName}
                         text={post.text}
                     />

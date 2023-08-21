@@ -1,33 +1,21 @@
 import React, { useState } from 'react';
 import "./TweetBox.css";
 import { Link } from 'react-router-dom';
-import { Avatar, Button, IconButton, styled } from '@mui/material';
-import Stack from '@mui/material/Stack';
+import { Avatar, Button } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
-import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import MuiAlert from '@mui/material/Alert';
 import axios from 'axios';
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-/*const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));*/
-
 export default function TweetBox(props) {
 
-  const { userId, userName, refreshPosts} = props;
+  const { userId, userName, refreshPosts } = props;
   const [text, setText] = useState("");
   const [isSent, setIsSent] = useState(false);
-  const [open, setOpen] = React.useState(false);
+  /*const [open, setOpen] = React.useState(false);*/
 
   const savePost = () => {
 
@@ -47,22 +35,6 @@ export default function TweetBox(props) {
       });
 
   };
-
-  /*fetch("/api/posts",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-      body: JSON.stringify({
-        text: "text",
-        userId: 1
-      }),
-    })
-
-    .then((res) => res.json())
-    .catch((err) => console.log("error"))*/
 
   const sendTweet = e => {
     e.preventDefault();

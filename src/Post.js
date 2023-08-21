@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Post.css'
 import { Link } from 'react-router-dom';
-import { Avatar } from '@mui/material'
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import RepeatIcon from '@mui/icons-material/Repeat';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import PublishIcon from '@mui/icons-material/Publish';
+import { Avatar, IconButton } from '@mui/material'
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
 
 function Post(props) {
 
-  const { userName, userId, text, postId} = props;
+  const { userName, userId, createDate, text } = props;
+
+  const [liked, setLiked] = useState(false);
+
+  const handleLike = () => {
+
+    setLiked(!liked);
+  }
 
   return (
     <div className="post">
@@ -24,7 +29,7 @@ function Post(props) {
         <div className="post__header">
           <div className="post__headerText">
             <h3>
-              {userName}
+              {userName} • {createDate}
             </h3>
           </div>
           <div className="post__HeaderDescription">
@@ -32,10 +37,12 @@ function Post(props) {
           </div>
         </div>
         <div className="post__footer">
-          <ChatBubbleOutlineIcon fontSize="small" />
-          <RepeatIcon fontSize="small" />
-          <FavoriteBorderIcon fontSize="small" />
+          {/*<ChatBubbleOutlineIcon fontSize="small" />
           <PublishIcon fontSize="small" />
+          <RepeatIcon fontSize="small" />*/}
+          <IconButton onClick={handleLike} aria-label='add to favorites'>
+            <FavoriteIcon style={liked ? { color: "#a9000b"} : null} fontSize='small' />
+          </IconButton>
         </div>
       </div>
     </div>
