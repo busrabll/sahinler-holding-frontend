@@ -68,19 +68,19 @@ export default function TweetBox(props) {
         <form>
           <div className="tweetBox__input">
             <Link className="link" to={{ pathname: '/users/' + userId }}>
-              <Avatar aria-label='recipe'>
+              <Avatar aria-label='recipe'
+                sx={{ background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)' }}>
                 {userName.charAt(0).toUpperCase()}
               </Avatar>
             </Link>
-
-            <input
+            <input required
               onChange={(e) => handleText(e.target.value)}
               value={text}
               placeholder="What's Happening"
               type="text" />
-
           </div>
-          <Button onClick={sendTweet} type='submit' className="tweetBox__tweetButton">Send</Button>
+          <Button onClick={sendTweet} type='submit' className="tweetBox__tweetButton"
+            sx={{ background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)' }}>Send</Button>
         </form>
       </div>
     </div>

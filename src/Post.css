@@ -10,11 +10,15 @@
     padding: 10px;
 }
 
+p {
+    width: 400px;
+    word-wrap: break-word;
+}
+
 .post__footer {
     display: flex;
     justify-content: space-between;
-    margin-top: 5px;
-    float: right;
+    margin-top: 10px;
 }
 
 .post__headerDescription {
