@@ -73,7 +73,7 @@ export default function TweetBox(props) {
                 {userName.charAt(0).toUpperCase()}
               </Avatar>
             </Link>
-            <input required
+            <input
               onChange={(e) => handleText(e.target.value)}
               value={text}
               placeholder="What's Happening"

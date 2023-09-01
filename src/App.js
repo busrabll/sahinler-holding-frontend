@@ -4,6 +4,7 @@ import SideBar from './SideBar';
 import Feed from './Feed';
 import Widgets from './Widgets';
 import User from './User';
+import UpdatePost from './UpdatePost';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Feed/>}></Route>
           <Route exact path="/users/:userId" element={<User/>}></Route>
+          <Route exact path="/posts/edit/:postId" element={<UpdatePost/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
